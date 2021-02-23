@@ -56,3 +56,14 @@ We have different ways of using python and python packages.
 - Binglan will use pyenv and venv
 - Rikiya will use conda
 We both use python=3.8.7 (it's Binglan's default version).
+
+Next step is to
+- get familiar with turtle
+- draw an example of house in some shared doc
+
+Your house must have:
+- At least 4 windows: TBD
+- At least two garage doors: TBD
+- At least one door: TBD
+- At least two trees: TBD
+- One or more clouds: TBD
