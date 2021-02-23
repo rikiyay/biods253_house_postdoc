@@ -52,18 +52,13 @@ We will use python (version 3.8) and standard library called turtle to draw a ho
 
 ## Homework Logging
 
-We have different ways of using python and python packages. 
+1. We have different ways of using python and python packages. 
 - Binglan will use pyenv and venv
 - Rikiya will use conda
 We both use python=3.8.7 (it's Binglan's default version).
 
-Next step is to
-- get familiar with turtle
-- draw an example of house in some shared doc
+1. We are not going to use Docker for this project.
 
-Your house must have:
-- At least 4 windows: TBD
-- At least two garage doors: TBD
-- At least one door: TBD
-- At least two trees: TBD
-- One or more clouds: TBD
+1. Next step is to
+- get familiar with turtle
+- draw an overview of our house in some shared doc (google slide, draw.io, etc.)?
