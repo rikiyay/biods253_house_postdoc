@@ -53,9 +53,8 @@ We will use python (version 3.8) and standard library called turtle to draw a ho
 ## Homework Logging
 
 1. We have different ways of using python and python packages. 
-- Binglan will use pyenv and venv
-- Rikiya will use conda
-We both use python=3.8.7 (it's Binglan's default version).
+- Binglan will use pyenv (and venv) for python=3.8.7 (Binglan's default version)
+- Rikiya will use conda for python=3.8.5 (conda only allowed me to install 3.8.5, so we have a little compatibility issue here -> docker may be a good solution but will try to see how the current setting works)
 
 1. We are not going to use Docker for this project.
 
