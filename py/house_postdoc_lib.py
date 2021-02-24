@@ -83,6 +83,9 @@ class My_turtle():
         self.my_turtle.end_fill()
         log.debug(f'draw a door and a door knob')
 
+    def draw_garage(self):
+        raise NotImplementedError
+
     def draw_cloud(self):
         raise NotImplementedError
 
@@ -91,13 +94,3 @@ class My_turtle():
 
     def draw_house(self):
         raise NotImplementedError
-
-
-
-
-
-
-
-
-
-
