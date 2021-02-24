@@ -46,6 +46,7 @@ if __name__ == '__main__':
     my_turtle.set_position(120, -30)
     my_turtle.draw_window(50)
     my_turtle.draw_door(70, -100, 60, 100)
+    my_turtle.my_turtle.hideturtle()
 
     time.sleep(10)
     sys.exit(0)
