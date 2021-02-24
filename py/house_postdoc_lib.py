@@ -5,7 +5,44 @@
 ''' This is the python file that contains functions and most code for house_postdoc '''
 
 import logging
-from numbers import Number
+import turtle
+
+log = logging.getLogger(__name__)
+
+class My_turtle():
+    def __init__(self):
+        self.screen = turtle.getscreen()
+        self.my_turtle = turtle.Turtle()
+
+    def set_position(self, x, y):
+        '''set turtle position at (x, y) without drawing a line'''
+        self.my_turtle.penup()
+        self.my_turtle.setposition(x, y)
+        self.my_turtle.pendown()
+        log.info(f'set turtle position at ({x, y})')
+
+    def draw_rectangle(self, x_length, y_length):
+        '''draw a rectangle with arbitrary size'''
+        self.my_turtle.forward(x_length)
+        self.my_turtle.left(90)
+        self.my_turtle.forward(y_length)
+        self.my_turtle.left(90)
+        self.my_turtle.forward(x_length)
+        self.my_turtle.left(90)
+        self.my_turtle.forward(y_length)
+        log.info(f'draw a rectangle with a size of ({x_length, y_length})')
+
+    def draw_triangle(self, x_length, y_length):
+        '''draw a triangle with arbitrary size'''
+        raise NotImplementedError
+
+
+
+
+
+
+
+
 
 def _check_number(n):
     if not isinstance(n, Number):
@@ -15,12 +52,12 @@ def add(lval, rval):
     ''' this adds the two numbers and returns the sum '''
     _check_number(lval)
     _check_number(rval)
-    logging.debug('add is adding %lf to %lf ' % (lval, rval))
+    log.debug('add is adding %lf to %lf ' % (lval, rval))
     return lval + rval
 
 def sub(lval, rval):
     ''' this subtracts the two numbers and returns the difference '''
     _check_number(lval)
     _check_number(rval)
-    logging.debug('add is subtracting %lf from %lf ' % (rval, lval))
+    log.debug('add is subtracting %lf from %lf ' % (rval, lval))
     return lval - rval
