@@ -9,6 +9,10 @@ import turtle
 
 log = logging.getLogger(__name__)
 
+def _check_integer(n):
+    if not isinstance(n, int):
+        raise TypeError('Only integers are supported')
+
 class My_turtle():
     def __init__(self):
         self.screen = turtle.getscreen()
@@ -16,13 +20,17 @@ class My_turtle():
 
     def set_position(self, x, y): # need to add line and fill colors
         '''set turtle position at (x, y) without drawing a line'''
+        _check_integer(x)
+        _check_integer(y)
         self.my_turtle.penup()
         self.my_turtle.setposition(x, y)
         self.my_turtle.pendown()
-        log.info(f'set turtle position at ({x, y})')
+        log.debug(f'set turtle position at ({x, y})')
 
     def draw_rectangle(self, x_length, y_length): # need to add line and fill colors
         '''draw a rectangle with arbitrary size'''
+        _check_integer(x_length)
+        _check_integer(y_length)
         self.my_turtle.forward(x_length)
         self.my_turtle.left(90)
         self.my_turtle.forward(y_length)
@@ -30,7 +38,7 @@ class My_turtle():
         self.my_turtle.forward(x_length)
         self.my_turtle.left(90)
         self.my_turtle.forward(y_length)
-        log.info(f'draw a rectangle with a size of ({x_length, y_length})')
+        log.debug(f'draw a rectangle with a size of ({x_length, y_length})')
 
     def draw_triangle(self, x_length, y_length):
         '''draw a triangle with arbitrary size'''
@@ -44,20 +52,5 @@ class My_turtle():
 
 
 
-def _check_number(n):
-    if not isinstance(n, Number):
-        raise TypeError('Only numbers are supported')
 
-def add(lval, rval):
-    ''' this adds the two numbers and returns the sum '''
-    _check_number(lval)
-    _check_number(rval)
-    log.debug('add is adding %lf to %lf ' % (lval, rval))
-    return lval + rval
 
-def sub(lval, rval):
-    ''' this subtracts the two numbers and returns the difference '''
-    _check_number(lval)
-    _check_number(rval)
-    log.debug('add is subtracting %lf from %lf ' % (rval, lval))
-    return lval - rval
