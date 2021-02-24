@@ -13,11 +13,11 @@ import house_postdoc_lib
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
-    parser.add_argument('-w', '--window', default=4, choices=[4, 6, 8], type=int, help='number of the windows')
+    parser.add_argument('-w', '--window', default=4, choices=[4, 8, 12], type=int, help='number of the windows')
     parser.add_argument('-g', '--garage', default=2, choices=[2, 3, 4], type=int, help='number of the garage doors')
     parser.add_argument('-d', '--door', default=1, choices=[1, 2], type=int, help='number of the doors')
-    parser.add_argument('-t', '--tree', default=2, choices=[2, 3, 4, 5, 6], type=int, help='number of the trees')
-    parser.add_argument('-c', '--cloud', default=1, choices=[1, 2, 3, 4, 5, 6], type=int, help='number of the clouds')
+    parser.add_argument('-t', '--tree', default=2, choices=[2, 3, 4], type=int, help='number of the trees')
+    parser.add_argument('-c', '--cloud', default=1, choices=[1, 2, 3], type=int, help='number of the clouds')
     parser.add_argument('-v', '--verbose', default=False, action="store_true",
                         help="print details")
     args = parser.parse_args()
@@ -38,9 +38,14 @@ if __name__ == '__main__':
     clouds = args.cloud
     logging.info(f'n_window is {windows}, n_garage is {garages}, n_door is {doors}, n_tree is {trees}, n_cloud is {clouds}')
     my_turtle = house_postdoc_lib.My_turtle()
-    my_turtle.draw_rectangle(100, 100)
-    my_turtle.set_position(-100, -100)
-    my_turtle.draw_rectangle(50, 50)
+    my_turtle.draw_rectangle(200, 200)
+    my_turtle.set_position(-50, 0)
+    my_turtle.draw_triangle(300)
+    my_turtle.set_position(30, -30)
+    my_turtle.draw_window(50)
+    my_turtle.set_position(120, -30)
+    my_turtle.draw_window(50)
+    my_turtle.draw_door(70, -100, 60, 100)
 
-    time.sleep(3)
+    time.sleep(10)
     sys.exit(0)
