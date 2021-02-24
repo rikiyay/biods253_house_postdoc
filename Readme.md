@@ -26,18 +26,15 @@ conda activate my_turtle
 ```
 python py/house_postdoc_cli.py
 ```
+- default values are: `--window 4 --garage 2 --door 1 --tree 2 --cloud 1`
 
 ### You can change the numbers of windows, garage doors, doors, trees, and clouds by specifying the arguments
 ```
-python py/house_postdoc_cli.py --window 6 --garage 3 --door 2 --tree 4 --cloud 3 
+python py/house_postdoc_cli.py --window 8 --garage 3 --door 2 --tree 3 --cloud 2 
 ```
 or
 ```
-python py/house_postdoc_cli.py -w 6 -g 3 -d 2 -t 4 -c 3 
-```
-Default values are:
-```
---window 4 --garage 2 --door 1 --tree 2 --cloud 1
+python py/house_postdoc_cli.py -w 8 -g 3 -d 2 -t 3 -c 2 
 ```
 
 ## Code structure:
