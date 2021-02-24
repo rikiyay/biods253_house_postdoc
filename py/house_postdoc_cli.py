@@ -7,17 +7,17 @@
 import argparse
 import logging
 import sys
+import time
 
 import house_postdoc_lib
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
-    parser.add_argument('action', choices=['add', 'subtract'], help='Action to take')
-    parser.add_argument('-w', '--window', required=True, type=int, help='number of the windows')
-    parser.add_argument('-g', '--garage', required=True, type=int, help='number of the garage doors')
-    parser.add_argument('-d', '--door', required=True, type=int, help='number of the doors')
-    parser.add_argument('-t', '--tree', required=True, type=int, help='number of the trees')
-    parser.add_argument('-c', '--cloud', required=True, type=int, help='number of the clouds')
+    parser.add_argument('-w', '--window', default=4, choices=[4, 6, 8], type=int, help='number of the windows')
+    parser.add_argument('-g', '--garage', default=2, choices=[2, 3, 4], type=int, help='number of the garage doors')
+    parser.add_argument('-d', '--door', default=1, choices=[1, 2], type=int, help='number of the doors')
+    parser.add_argument('-t', '--tree', default=2, choices=[2, 3, 4, 5, 6], type=int, help='number of the trees')
+    parser.add_argument('-c', '--cloud', default=1, choices=[1, 2, 3, 4, 5, 6], type=int, help='number of the clouds')
     parser.add_argument('-v', '--verbose', default=False, action="store_true",
                         help="print details")
     args = parser.parse_args()
@@ -31,18 +31,16 @@ if __name__ == '__main__':
     )
 
     logging.info('starting up!')
-    window = args.window
-    garage = args.garage
-    door = args.door
-    tree = args.tree
+    windows = args.window
+    garages = args.garage
+    doors = args.door
+    trees = args.tree
     clouds = args.cloud
+    logging.info(f'n_window is {windows}, n_garage is {garages}, n_door is {doors}, n_tree is {trees}, n_cloud is {clouds}')
     my_turtle = house_postdoc_lib.My_turtle()
+    my_turtle.draw_rectangle(100, 100)
+    my_turtle.set_position(-100, -100)
+    my_turtle.draw_rectangle(50, 50)
 
-    # lval = args.left
-    # rval = args.right
-    # logging.debug('operation is %s' % args.action)
-    # if args.action == 'add':
-    #     print(house_postdoc_lib.add(lval, rval))
-    # elif args.action == 'subtract':
-    #     print(house_postdoc_lib.sub(lval, rval))
+    time.sleep3
     sys.exit(0)
