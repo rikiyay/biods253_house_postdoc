@@ -14,14 +14,14 @@ class My_turtle():
         self.screen = turtle.getscreen()
         self.my_turtle = turtle.Turtle()
 
-    def set_position(self, x, y):
+    def set_position(self, x, y): # need to add line and fill colors
         '''set turtle position at (x, y) without drawing a line'''
         self.my_turtle.penup()
         self.my_turtle.setposition(x, y)
         self.my_turtle.pendown()
         log.info(f'set turtle position at ({x, y})')
 
-    def draw_rectangle(self, x_length, y_length):
+    def draw_rectangle(self, x_length, y_length): # need to add line and fill colors
         '''draw a rectangle with arbitrary size'''
         self.my_turtle.forward(x_length)
         self.my_turtle.left(90)

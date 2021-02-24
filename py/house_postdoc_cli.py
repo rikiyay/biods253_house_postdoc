@@ -13,8 +13,11 @@ import house_postdoc_lib
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
     parser.add_argument('action', choices=['add', 'subtract'], help='Action to take')
-    parser.add_argument('-l', '--left', required=True, type=float, help='the number on the left')
-    parser.add_argument('-r', '--right', required=True, type=float, help='the number on the right')
+    parser.add_argument('-w', '--window', required=True, type=int, help='number of the windows')
+    parser.add_argument('-g', '--garage', required=True, type=int, help='number of the garage doors')
+    parser.add_argument('-d', '--door', required=True, type=int, help='number of the doors')
+    parser.add_argument('-t', '--tree', required=True, type=int, help='number of the trees')
+    parser.add_argument('-c', '--cloud', required=True, type=int, help='number of the clouds')
     parser.add_argument('-v', '--verbose', default=False, action="store_true",
                         help="print details")
     args = parser.parse_args()
@@ -28,11 +31,18 @@ if __name__ == '__main__':
     )
 
     logging.info('starting up!')
-    lval = args.left
-    rval = args.right
-    logging.debug('operation is %s' % args.action)
-    if args.action == 'add':
-        print(house_postdoc_lib.add(lval, rval))
-    elif args.action == 'subtract':
-        print(house_postdoc_lib.sub(lval, rval))
+    window = args.window
+    garage = args.garage
+    door = args.door
+    tree = args.tree
+    clouds = args.cloud
+    my_turtle = house_postdoc_lib.My_turtle()
+
+    # lval = args.left
+    # rval = args.right
+    # logging.debug('operation is %s' % args.action)
+    # if args.action == 'add':
+    #     print(house_postdoc_lib.add(lval, rval))
+    # elif args.action == 'subtract':
+    #     print(house_postdoc_lib.sub(lval, rval))
     sys.exit(0)
