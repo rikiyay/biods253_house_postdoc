@@ -15,10 +15,11 @@ def _check_integer(n):
 
 class My_turtle():
     def __init__(self):
+        turtle.title("This is my house!")
         self.screen = turtle.getscreen()
         self.my_turtle = turtle.Turtle()
 
-    def set_position(self, x, y): # need to add line and fill colors
+    def set_position(self, x, y):
         '''set turtle position at (x, y) without drawing a line'''
         _check_integer(x)
         _check_integer(y)
@@ -27,10 +28,12 @@ class My_turtle():
         self.my_turtle.pendown()
         log.debug(f'set turtle position at ({x, y})')
 
-    def draw_rectangle(self, x_length, y_length): # need to add line and fill colors
+    def draw_rectangle(self, x_length, y_length, line_color='blue', fill_color='cyan'): # need to add line and fill colors
         '''draw a rectangle with arbitrary size'''
         _check_integer(x_length)
         _check_integer(y_length)
+        self.my_turtle.color(line_color, fill_color)
+        self.my_turtle.begin_fill()
         self.my_turtle.forward(x_length)
         self.my_turtle.left(90)
         self.my_turtle.forward(y_length)
@@ -38,6 +41,7 @@ class My_turtle():
         self.my_turtle.forward(x_length)
         self.my_turtle.left(90)
         self.my_turtle.forward(y_length)
+        self.my_turtle.end_fill()
         log.debug(f'draw a rectangle with a size of ({x_length, y_length})')
 
     def draw_triangle(self, x_length, y_length):

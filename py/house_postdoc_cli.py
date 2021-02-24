@@ -42,5 +42,5 @@ if __name__ == '__main__':
     my_turtle.set_position(-100, -100)
     my_turtle.draw_rectangle(50, 50)
 
-    time.sleep3
+    time.sleep(3)
     sys.exit(0)
