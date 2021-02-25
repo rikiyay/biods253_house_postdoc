@@ -13,6 +13,7 @@ log = logging.getLogger(__name__)
 def _check_integer(n):
     if not isinstance(n, int):
         raise TypeError('Only integers are supported')
+    return True
 
 class My_turtle():
     def __init__(self, draw_speed):
@@ -25,8 +26,6 @@ class My_turtle():
 
     def set_position(self, x, y):
         '''set turtle position at (x, y) without drawing a line'''
-        # _check_integer(x)
-        # _check_integer(y)
         self.my_turtle.penup()
         self.my_turtle.setposition(x, y)
         self.my_turtle.pendown()
@@ -34,24 +33,19 @@ class My_turtle():
 
     def draw_rectangle(self, x_length, y_length, line_color='blue', fill_color='cadet blue'):
         '''draw a rectangle with arbitrary size'''
-        # _check_integer(x_length)
-        # _check_integer(y_length)
         self.my_turtle.setheading(0)
         self.my_turtle.color(line_color, fill_color)
         self.my_turtle.begin_fill()
-        self.my_turtle.forward(x_length)
-        self.my_turtle.right(90)
-        self.my_turtle.forward(y_length)
-        self.my_turtle.right(90)
-        self.my_turtle.forward(x_length)
-        self.my_turtle.right(90)
-        self.my_turtle.forward(y_length)
+        for i in range(2):
+            self.my_turtle.forward(x_length)
+            self.my_turtle.right(90)
+            self.my_turtle.forward(y_length)
+            self.my_turtle.right(90)
         self.my_turtle.end_fill()
         log.debug(f'draw a rectangle with a size of ({x_length, y_length})')
 
     def draw_triangle(self, base_length, line_color='magenta', fill_color='pink'):
         '''draw a triangle with arbitrary size'''
-        # _check_integer(base_length)
         self.my_turtle.setheading(0)
         self.my_turtle.color(line_color, fill_color)
         self.my_turtle.begin_fill()
@@ -65,7 +59,6 @@ class My_turtle():
 
     def draw_window(self, window_size):
         '''draw a 2x2 window'''
-        # _check_integer(window_size)
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
         self.draw_rectangle(window_size, window_size, 'green', 'gainsboro')
