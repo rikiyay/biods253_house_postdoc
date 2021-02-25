@@ -39,13 +39,11 @@ class My_turtle():
         self.my_turtle.setheading(0)
         self.my_turtle.color(line_color, fill_color)
         self.my_turtle.begin_fill()
-        self.my_turtle.forward(x_length)
-        self.my_turtle.right(90)
-        self.my_turtle.forward(y_length)
-        self.my_turtle.right(90)
-        self.my_turtle.forward(x_length)
-        self.my_turtle.right(90)
-        self.my_turtle.forward(y_length)
+        for i in range(2):
+            self.my_turtle.forward(x_length)
+            self.my_turtle.right(90)
+            self.my_turtle.forward(y_length)
+            self.my_turtle.right(90)
         self.my_turtle.end_fill()
         log.debug(f'draw a rectangle with a size of ({x_length, y_length})')
 

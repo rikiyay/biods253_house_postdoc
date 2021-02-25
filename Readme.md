@@ -27,15 +27,15 @@ conda activate my_turtle
 python py/house_postdoc_cli.py
 ```
 
-### You can change the numbers of windows, garage doors, doors, trees, clouds, and draw speed by specifying the arguments
+### You can change the numbers of windows, doors, trees, clouds, and draw speed by specifying the arguments
 ```
-python py/house_postdoc_cli.py --num_windows 8 --num_garages 1 --num_doors 5 --num_trees 5 --num_clouds 10 --draw_speed 6
+python py/house_postdoc_cli.py --num_windows 8 --num_doors 5 --num_trees 5 --num_clouds 10 --draw_speed 6
 ```
 or
 ```
-python py/house_postdoc_cli.py -w 8 -g 1 -d 5 -t 5 -c 10 -s 6
+python py/house_postdoc_cli.py -w 8 -d 5 -t 5 -c 10 -s 6
 ```
-defaults are: `--num_windows 4 --num_garages 1 --num_doors 1 --num_trees 3 --num_clouds 5 --draw_speed 0`
+defaults are: `--num_windows 4 --num_doors 1 --num_trees 3 --num_clouds 5 --draw_speed 0`
 
 ## Code structure:
 ```.

@@ -13,6 +13,7 @@ import house_postdoc_lib
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
+    # parser.add_argument('-i', '--interactive', default=False, action='store_true', help='enable interactive mode')
     parser.add_argument('-w', '--num_windows', default=4, choices=range(1, 9), type=int, help='number of the windows')
     # parser.add_argument('-g', '--num_garages', default=1, choices=[1], type=int, help='number of the garage doors')
     parser.add_argument('-d', '--num_doors', default=1, choices=range(1, 6), type=int, help='number of the doors')
@@ -31,11 +32,13 @@ if __name__ == '__main__':
         ]
     )
 
+    # if args.interactive:
+    #     answer1 = input('would you like to start? (y/n)')
+    #     if answer1 = 'yes' or answer1 == 'y':
+
     logging.info('starting up!')
     logging.debug(f'n_window is {args.num_windows}, n_door is {args.num_doors}, \
         n_tree is {args.num_trees}, n_cloud is {args.num_clouds}')
-    # logging.debug(f'n_window is {args.num_windows}, n_garage is {args.num_garages}, \
-    #         n_door is {args.num_doors}, n_tree is {args.num_trees}, n_cloud is {args.num_clouds}')
 
     # initialize My_turtle class object
     my_turtle = house_postdoc_lib.My_turtle(draw_speed=args.draw_speed)
@@ -59,5 +62,5 @@ if __name__ == '__main__':
     my_turtle.draw_sun()
 
     my_turtle.my_turtle.hideturtle()
-    time.sleep(10)
+    time.sleep(5)
     sys.exit(0)
