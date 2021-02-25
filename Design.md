@@ -46,6 +46,7 @@ Allow users to specify different numbers of objects in the image of a house.
 
 ## Detailed Design
 
+We will draw the draft using draw.io. Draw.io creates an XML file hosted on Google Drive (https://drive.google.com/file/d/1oKM5badNSETzD_BiwFQ3YALojEdTDxf5/view?usp=sharing). 
 We will have a `Python-cli` that accepts integer numbers of windows, garage doors, house doors, trees, and clouds as arguments (Only allow integers for any arguments) from users. There will be a checkpoint that validates whether input arguments are integers. If not, the program returns an error and exit. If inputs are integers, the program will invoke functions in the `python_lib` to draw an image. 
 
 We will have a `python_lib` that defines class(es) or functions to create house objects using Turtle.
