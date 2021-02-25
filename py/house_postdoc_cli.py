@@ -14,7 +14,7 @@ import house_postdoc_lib
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
     parser.add_argument('-w', '--num_windows', default=4, choices=range(1, 9), type=int, help='number of the windows')
-    parser.add_argument('-g', '--num_garages', default=1, choices=[1], type=int, help='number of the garage doors')
+    # parser.add_argument('-g', '--num_garages', default=1, choices=[1], type=int, help='number of the garage doors')
     parser.add_argument('-d', '--num_doors', default=1, choices=range(1, 6), type=int, help='number of the doors')
     parser.add_argument('-t', '--num_trees', default=3, choices=range(1, 6), type=int, help='number of the trees')
     parser.add_argument('-c', '--num_clouds', default=5, choices=range(1, 10), type=int, help='number of the clouds')
@@ -32,31 +32,30 @@ if __name__ == '__main__':
     )
 
     logging.info('starting up!')
-    logging.info(f'n_window is {args.num_windows}, n_garage is {args.num_garages}, n_door is {args.num_doors}, \
+    logging.debug(f'n_window is {args.num_windows}, n_door is {args.num_doors}, \
         n_tree is {args.num_trees}, n_cloud is {args.num_clouds}')
+    # logging.debug(f'n_window is {args.num_windows}, n_garage is {args.num_garages}, \
+    #         n_door is {args.num_doors}, n_tree is {args.num_trees}, n_cloud is {args.num_clouds}')
 
     # initialize My_turtle class object
     my_turtle = house_postdoc_lib.My_turtle(draw_speed=args.draw_speed)
-
     # set up window and screen to draw a house
     WIDTH, HEIGHT = 800, 600
     my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
 
     # house
     my_turtle.draw_house()
-
     # windows
     my_turtle.draw_windows(args.num_windows)
-     
     # door
     my_turtle.draw_doors(args.num_doors)
-
     # garage
-    my_turtle.set_position(-165, -85)
-    my_turtle.draw_garage(180, 135)
-
+    my_turtle.draw_garage()
+    # tree
+    # my_turtle.draw_trees(args.num_trees)
+    # cloud
+    # my_turtle.draw_clouds(args.num_clouds)
     # sun
-    my_turtle.set_position(-320, 180)
     my_turtle.draw_sun()
 
     my_turtle.my_turtle.hideturtle()

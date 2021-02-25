@@ -111,8 +111,9 @@ class My_turtle():
             self.draw_door(x_length=40, y_length=80)
         log.debug(f'draw arbitrary number of doors')
 
-    def draw_garage(self, x_length, y_length):
+    def draw_garage(self, x_length=180, y_length=135):
         '''draw a garage door'''
+        self.set_position(x=-165, y=-85)
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
@@ -120,10 +121,10 @@ class My_turtle():
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
         log.debug(f'draw a garage door with a size of ({x_length, y_length})')
 
-    def draw_cloud(self): # Binglan to implement
+    def draw_clouds(self, num_clouds): # Binglan to implement
         raise NotImplementedError
 
-    def draw_tree(self): # Binglan to implement
+    def draw_trees(self, num_trees): # Binglan to implement
         raise NotImplementedError
 
     def draw_house(self):
@@ -138,6 +139,7 @@ class My_turtle():
 
     def draw_sun(self):
         self.my_turtle.color('tomato', 'gold')
+        self.set_position(x=-320, y=180)
         self.my_turtle.begin_fill()
         for i in range(36):
             self.my_turtle.forward(100)
