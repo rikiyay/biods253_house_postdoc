@@ -13,11 +13,12 @@ import house_postdoc_lib
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
-    parser.add_argument('-w', '--window', default=4, choices=[4, 8, 12], type=int, help='number of the windows')
-    parser.add_argument('-g', '--garage', default=2, choices=[2, 3, 4], type=int, help='number of the garage doors')
-    parser.add_argument('-d', '--door', default=1, choices=[1, 2], type=int, help='number of the doors')
-    parser.add_argument('-t', '--tree', default=2, choices=[2, 3, 4], type=int, help='number of the trees')
-    parser.add_argument('-c', '--cloud', default=1, choices=[1, 2, 3], type=int, help='number of the clouds')
+    parser.add_argument('-w', '--num_windows', default=4, choices=range(1, 9), type=int, help='number of the windows')
+    parser.add_argument('-g', '--num_garages', default=1, choices=[1], type=int, help='number of the garage doors')
+    parser.add_argument('-d', '--num_doors', default=1, choices=range(1, 6), type=int, help='number of the doors')
+    parser.add_argument('-t', '--num_trees', default=3, choices=range(1, 6), type=int, help='number of the trees')
+    parser.add_argument('-c', '--num_clouds', default=5, choices=range(1, 10), type=int, help='number of the clouds')
+    parser.add_argument('-s', '--draw_speed', default=0, choices=range(0, 11), type=int, help='0: fastest, 1: slowest, 3: slow, 6: normal, 10: fast')
     parser.add_argument('-v', '--verbose', default=False, action="store_true",
                         help="print details")
     args = parser.parse_args()
@@ -31,42 +32,33 @@ if __name__ == '__main__':
     )
 
     logging.info('starting up!')
-    logging.info(f'n_window is {args.window}, n_garage is {args.garage}, n_door is {args.door}, n_tree is {args.tree}, n_cloud is {args.cloud}')
+    logging.info(f'n_window is {args.num_windows}, n_garage is {args.num_garages}, n_door is {args.num_doors}, \
+        n_tree is {args.num_trees}, n_cloud is {args.num_clouds}')
 
     # initialize My_turtle class object
-    my_turtle = house_postdoc_lib.My_turtle()
+    my_turtle = house_postdoc_lib.My_turtle(draw_speed=args.draw_speed)
 
     # set up window and screen to draw a house
     WIDTH, HEIGHT = 800, 600
     my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
 
     # house
-    my_turtle.set_position(40, -20)
-    my_turtle.draw_rectangle(240, 200)
-    my_turtle.set_position(0, -20)
-    my_turtle.draw_triangle(320)
-    my_turtle.set_position(-190, -60)
-    my_turtle.draw_rectangle(230, 160)
+    my_turtle.draw_house()
 
     # windows
-    my_turtle.set_position(56, -60)
-    my_turtle.draw_window(40)
-    my_turtle.set_position(112, -60)
-    my_turtle.draw_window(40)
-    my_turtle.set_position(168, -60)
-    my_turtle.draw_window(40)
-    my_turtle.set_position(220, -60)
-    my_turtle.draw_window(40)
-    
+    my_turtle.draw_windows(args.num_windows)
+     
     # door
-    my_turtle.set_position(140, -140)
-    my_turtle.draw_door(40, 80)
+    my_turtle.draw_doors(args.num_doors)
 
     # garage
     my_turtle.set_position(-165, -85)
     my_turtle.draw_garage(180, 135)
 
-    my_turtle.my_turtle.hideturtle()
+    # sun
+    my_turtle.set_position(-320, 180)
+    my_turtle.draw_sun()
 
+    my_turtle.my_turtle.hideturtle()
     time.sleep(10)
     sys.exit(0)

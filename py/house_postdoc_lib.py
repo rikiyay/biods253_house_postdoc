@@ -15,12 +15,13 @@ def _check_integer(n):
         raise TypeError('Only integers are supported')
 
 class My_turtle():
-    def __init__(self):
+    def __init__(self, draw_speed):
         turtle.title("This is my house!")
-        self.screen = turtle.getscreen()
+        self.screen = turtle.Screen()
+        self.screen.bgcolor('honeydew') # options: 'honeydew', 'pale green', 'light green', 'green yellow'
         self.my_turtle = turtle.Turtle()
         self.my_turtle.shape('turtle')
-        self.my_turtle.speed(0) # 0: fastest, 1: slowest, 6: normal, 10: second fastest
+        self.my_turtle.speed(draw_speed) # 0: fastest, 1: slowest, 6: normal, 10: second fastest
 
     def set_position(self, x, y):
         '''set turtle position at (x, y) without drawing a line'''
@@ -63,7 +64,7 @@ class My_turtle():
         log.debug(f'draw a triangle with a base length of {base_length}')
 
     def draw_window(self, window_size):
-        '''draw 2x2 windows'''
+        '''draw a 2x2 window'''
         # _check_integer(window_size)
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
@@ -73,11 +74,28 @@ class My_turtle():
         self.draw_rectangle(window_size/2, window_size/2, 'green', 'gainsboro')
         log.debug(f'draw a 2x2 window with a size of {window_size}')
 
+    def draw_windows(self, num_windows):
+        '''draw arbitrary number of windows'''
+        if num_windows < 5:
+            offset = (240-40*(num_windows))/(num_windows+1)
+            for i in range(num_windows):
+                self.set_position(40+(i+1)*offset+i*40, -60)
+                self.draw_window(40)
+        else:
+            for i in range(4):
+                offset = 16
+                self.set_position(40+(i+1)*offset+i*40, -60-80/3)
+                self.draw_window(40)
+            for i in range(num_windows-4):
+                offset = (240-40*(num_windows-4))/((num_windows-4)+1)
+                self.set_position(40+(i+1)*offset+i*40, -20-40/3)
+                self.draw_window(40)
+
     def draw_door(self, x_length, y_length):
         '''draw a door and a door knob'''
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
-        self.draw_rectangle(x_length, y_length, 'blue', 'plum')
+        self.draw_rectangle(x_length, y_length, 'dark goldenrod', 'gold')
         self.set_position(_pos[0]+15, _pos[1]-(y_length/2))
         self.my_turtle.color('tomato')
         self.my_turtle.begin_fill()
@@ -85,7 +103,16 @@ class My_turtle():
         self.my_turtle.end_fill()
         log.debug(f'draw a door and a door knob')
 
+    def draw_doors(self, num_doors):
+        '''draw arbitrary number of doors'''
+        offset = (240-40*num_doors)/(num_doors+1)
+        for i in range(num_doors):
+            self.set_position(40+(i+1)*offset+i*40, -140)
+            self.draw_door(x_length=40, y_length=80)
+        log.debug(f'draw arbitrary number of doors')
+
     def draw_garage(self, x_length, y_length):
+        '''draw a garage door'''
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
@@ -99,5 +126,20 @@ class My_turtle():
     def draw_tree(self): # Binglan to implement
         raise NotImplementedError
 
-    def draw_house(self): # Rikiya to implement
-        raise NotImplementedError
+    def draw_house(self):
+        '''draw a house'''
+        self.set_position(x=40, y=-20)
+        self.draw_rectangle(x_length=240, y_length=200)
+        self.set_position(x=0, y=-20)
+        self.draw_triangle(base_length=320)
+        self.set_position(x=-190, y=-60)
+        self.draw_rectangle(x_length=230, y_length=160)
+        log.debug(f'draw a house')
+
+    def draw_sun(self):
+        self.my_turtle.color('tomato', 'gold')
+        self.my_turtle.begin_fill()
+        for i in range(36):
+            self.my_turtle.forward(100)
+            self.my_turtle.left(170)
+        self.my_turtle.end_fill()
