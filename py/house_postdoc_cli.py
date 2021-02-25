@@ -13,7 +13,7 @@ import house_postdoc_lib
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='house_postdoc')
-    # parser.add_argument('-i', '--interactive', default=False, action='store_true', help='enable interactive mode')
+    parser.add_argument('-i', '--interactive', default=False, action='store_true', help='enable interactive mode')
     parser.add_argument('-w', '--num_windows', default=4, choices=range(1, 9), type=int, help='number of the windows')
     # parser.add_argument('-g', '--num_garages', default=1, choices=[1], type=int, help='number of the garage doors')
     parser.add_argument('-d', '--num_doors', default=1, choices=range(1, 6), type=int, help='number of the doors')
@@ -32,9 +32,22 @@ if __name__ == '__main__':
         ]
     )
 
-    # if args.interactive:
-    #     answer1 = input('would you like to start? (y/n)')
-    #     if answer1 = 'yes' or answer1 == 'y':
+    if args.interactive:
+        initial_answer = input('would you like to start? (y/n)\n')
+        if initial_answer=='yes' or initial_answer=='y':
+            answer_window = int(input('hou many windows would you like? pick from here (1/2/3/4/5/6/7/8)\n'))
+            if house_postdoc_lib._check_integer(answer_window) and answer_window in range(1, 9):
+                args.num_windows = answer_window
+            else:
+                raise ValueError('Invalid value; input has to be ; input has to be integer and chosen from range(1, 9)')
+            answer_door = int(input('hou many doors would you like? pick from here (1/2/3/4/5)\n'))
+            if house_postdoc_lib._check_integer(answer_door) and answer_door in range(1, 6):
+                args.num_doors = answer_door
+            else:
+                raise ValueError('Invalid value; input has to be integer and chosen from range(1, 6)')
+        else:
+            print('Have a nice day!')
+            sys.exit(0)
 
     logging.info('starting up!')
     logging.debug(f'n_window is {args.num_windows}, n_door is {args.num_doors}, \
@@ -60,6 +73,9 @@ if __name__ == '__main__':
     # my_turtle.draw_clouds(args.num_clouds)
     # sun
     my_turtle.draw_sun()
+    # text
+    my_turtle.set_position(0, 260)
+    my_turtle.my_turtle.write('Have a nice day!', align='center', font=('Arial', 20, 'normal'))
 
     my_turtle.my_turtle.hideturtle()
     time.sleep(5)
