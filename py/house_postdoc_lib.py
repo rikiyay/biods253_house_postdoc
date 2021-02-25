@@ -31,7 +31,7 @@ class My_turtle():
         self.my_turtle.pendown()
         log.debug(f'set turtle position at ({x, y})')
 
-    def draw_rectangle(self, x_length, y_length, line_color='blue', fill_color='cyan'):
+    def draw_rectangle(self, x_length, y_length, line_color='blue', fill_color='cadet blue'):
         '''draw a rectangle with arbitrary size'''
         # _check_integer(x_length)
         # _check_integer(y_length)
@@ -66,31 +66,38 @@ class My_turtle():
         '''draw 2x2 windows'''
         # _check_integer(window_size)
         _pos = self.my_turtle.position()
-        self.draw_rectangle(window_size, window_size, 'green', 'white')
-        self.draw_rectangle(window_size/2, window_size/2, 'green', 'white')
+        self.my_turtle.setheading(0)
+        self.draw_rectangle(window_size, window_size, 'green', 'gainsboro')
+        self.draw_rectangle(window_size/2, window_size/2, 'green', 'gainsboro')
         self.set_position(_pos[0]+window_size/2, _pos[1]-window_size/2)
-        self.draw_rectangle(window_size/2, window_size/2, 'green', 'white')
+        self.draw_rectangle(window_size/2, window_size/2, 'green', 'gainsboro')
         log.debug(f'draw a 2x2 window with a size of {window_size}')
 
-    def draw_door(self, x_start, y_start, x_length, y_length):
+    def draw_door(self, x_length, y_length):
         '''draw a door and a door knob'''
-        self.set_position(x_start, y_start)
-        self.draw_rectangle(x_length, y_length, 'blue', 'orange')
-        self.set_position(x_start+30, y_start-(y_length/2))
-        self.my_turtle.color('brown')
+        _pos = self.my_turtle.position()
+        self.my_turtle.setheading(0)
+        self.draw_rectangle(x_length, y_length, 'blue', 'plum')
+        self.set_position(_pos[0]+15, _pos[1]-(y_length/2))
+        self.my_turtle.color('tomato')
         self.my_turtle.begin_fill()
-        self.my_turtle.circle(10)
+        self.my_turtle.circle(5)
         self.my_turtle.end_fill()
         log.debug(f'draw a door and a door knob')
 
-    def draw_garage(self):
+    def draw_garage(self, x_length, y_length):
+        _pos = self.my_turtle.position()
+        self.my_turtle.setheading(0)
+        self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
+        self.set_position(_pos[0]+x_length/2, _pos[1])
+        self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
+        log.debug(f'draw a garage door with a size of ({x_length, y_length})')
+
+    def draw_cloud(self): # Binglan to implement
         raise NotImplementedError
 
-    def draw_cloud(self):
+    def draw_tree(self): # Binglan to implement
         raise NotImplementedError
 
-    def draw_tree(self):
-        raise NotImplementedError
-
-    def draw_house(self):
+    def draw_house(self): # Rikiya to implement
         raise NotImplementedError

@@ -31,21 +31,41 @@ if __name__ == '__main__':
     )
 
     logging.info('starting up!')
-    windows = args.window
-    garages = args.garage
-    doors = args.door
-    trees = args.tree
-    clouds = args.cloud
-    logging.info(f'n_window is {windows}, n_garage is {garages}, n_door is {doors}, n_tree is {trees}, n_cloud is {clouds}')
+    logging.info(f'n_window is {args.window}, n_garage is {args.garage}, n_door is {args.door}, n_tree is {args.tree}, n_cloud is {args.cloud}')
+
+    # initialize My_turtle class object
     my_turtle = house_postdoc_lib.My_turtle()
-    my_turtle.draw_rectangle(200, 200)
-    my_turtle.set_position(-50, 0)
-    my_turtle.draw_triangle(300)
-    my_turtle.set_position(30, -30)
-    my_turtle.draw_window(50)
-    my_turtle.set_position(120, -30)
-    my_turtle.draw_window(50)
-    my_turtle.draw_door(70, -100, 60, 100)
+
+    # set up window and screen to draw a house
+    WIDTH, HEIGHT = 800, 600
+    my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
+
+    # house
+    my_turtle.set_position(40, -20)
+    my_turtle.draw_rectangle(240, 200)
+    my_turtle.set_position(0, -20)
+    my_turtle.draw_triangle(320)
+    my_turtle.set_position(-190, -60)
+    my_turtle.draw_rectangle(230, 160)
+
+    # windows
+    my_turtle.set_position(56, -60)
+    my_turtle.draw_window(40)
+    my_turtle.set_position(112, -60)
+    my_turtle.draw_window(40)
+    my_turtle.set_position(168, -60)
+    my_turtle.draw_window(40)
+    my_turtle.set_position(220, -60)
+    my_turtle.draw_window(40)
+    
+    # door
+    my_turtle.set_position(140, -140)
+    my_turtle.draw_door(40, 80)
+
+    # garage
+    my_turtle.set_position(-165, -85)
+    my_turtle.draw_garage(180, 135)
+
     my_turtle.my_turtle.hideturtle()
 
     time.sleep(10)
