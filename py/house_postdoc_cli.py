@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # tree
     my_turtle.draw_trees(args.num_trees)
     # cloud
-    # my_turtle.draw_clouds(args.num_clouds)
+    my_turtle.draw_clouds(args.num_clouds)
     # sun
     my_turtle.draw_sun()
     # text
@@ -78,5 +78,5 @@ if __name__ == '__main__':
     my_turtle.my_turtle.write('Have a nice day!', align='center', font=('Arial', 20, 'normal'))
 
     my_turtle.my_turtle.hideturtle()
-    time.sleep(20)
+    time.sleep(5)
     sys.exit(0)
