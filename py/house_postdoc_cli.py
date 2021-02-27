@@ -77,7 +77,7 @@ if __name__ == '__main__':
     # sun
     my_turtle.draw_sun()
     # text
-    my_turtle.set_position(0, 260)
+    my_turtle.set_position(0, 120)
     my_turtle.my_turtle.write('Have a nice day!', align='center', font=('Arial', 20, 'normal'))
 
     my_turtle.my_turtle.hideturtle()
