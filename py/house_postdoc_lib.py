@@ -22,6 +22,7 @@ class My_turtle():
         self.screen.bgcolor('honeydew') # options: 'honeydew', 'pale green', 'light green', 'green yellow'
         self.my_turtle = turtle.Turtle()
         self.my_turtle.shape('turtle')
+        self.my_turtle.hideturtle() # hide turtle to increase drawing speed; avoid presence of turtle shadow over
         self.my_turtle.speed(draw_speed) # 0: fastest, 1: slowest, 6: normal, 10: second fastest
 
     def set_position(self, x, y):
@@ -56,6 +57,19 @@ class My_turtle():
         self.my_turtle.forward(math.sqrt(2)*base_length/2)
         self.my_turtle.end_fill()
         log.debug(f'draw a triangle with a base length of {base_length}')
+
+    def draw_circle(self, base_radius, line_color='LimeGreen', fill_color='DarkGreen'):
+        '''draw a circle with a designated radius '''
+        self.my_turtle.color(line_color, fill_color)
+        self.my_turtle.begin_fill()
+        self.my_turtle.circle(base_radius)
+        self.my_turtle.end_fill()
+        log.debug(f'draw a dot with a base radius of {base_radius}')
+
+    def draw_dot(self, base_diameter, dot_color='SkyBlue'):
+        '''draw a circle with a designated diameter using the turtle dot function '''
+        self.my_turtle.dot(base_diameter, dot_color)
+        log.debug(f'draw a dot with a base diameter of {base_diameter}')
 
     def draw_window(self, window_size):
         '''draw a 2x2 window'''
@@ -112,13 +126,32 @@ class My_turtle():
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
         self.set_position(_pos[0]+x_length/2, _pos[1])
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
-        log.debug(f'draw a garage door with a size of ({x_length, y_length})')
+        log.debug(f'draw two garage doors with a size of ({x_length, y_length})')
 
     def draw_clouds(self, num_clouds): # Binglan to implement
         raise NotImplementedError
 
+    def draw_tree(self):
+        '''draw one tree'''
+        _tree_crown_size = 50
+        _tree_width, _tree_height = 25, 70
+        _pos = self.my_turtle.position()
+        self.my_turtle.setheading(0)
+        self.draw_rectangle(_tree_width, _tree_height, 'SaddleBrown', 'SaddleBrown')
+        self.set_position(_pos[0], _pos[1]-_tree_crown_size/2)
+        self.draw_circle(25, 'LimeGreen', 'DarkGreen')
+        self.set_position(_pos[0]+_tree_width, _pos[1]-_tree_crown_size/2)
+        self.draw_circle(25, 'LimeGreen', 'DarkGreen')
+        self.set_position(_pos[0]+_tree_width/2, _pos[1]-_tree_crown_size/2+_tree_crown_size/2+5)
+        self.draw_circle(25, 'LimeGreen', 'DarkGreen')
+        log.debug(f'draw a tree')
+
     def draw_trees(self, num_trees): # Binglan to implement
-        raise NotImplementedError
+        offset = 120/num_trees
+        for i in range(num_trees):
+            self.set_position(-365+offset*i, -145)
+            self.draw_tree()
+        log.debug(f'draw arbitrary number of doors')
 
     def draw_house(self):
         '''draw a house'''
