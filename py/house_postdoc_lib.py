@@ -128,16 +128,33 @@ class My_turtle():
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
         log.debug(f'draw two garage doors with a size of ({x_length, y_length})')
 
+    def draw_cloud(self): # Binglan to implement
+        '''draw one could'''
+        _could_crown_size = 30
+        _pos = self.my_turtle.position()
+        self.draw_dot(_could_crown_size, 'Turquoise')
+        self.set_position(_pos[0]+20, _pos[1])
+        self.draw_dot(_could_crown_size, 'Turquoise')
+        self.set_position(_pos[0]+10, _pos[1]+10)
+        self.draw_dot(_could_crown_size, 'Turquoise')
+        self.set_position(_pos[0]+30, _pos[1]+10)
+        self.draw_dot(_could_crown_size, 'Turquoise')
+        log.debug(f'draw one cloud')
+
     def draw_clouds(self, num_clouds): # Binglan to implement
-        raise NotImplementedError
+        '''draw clouds'''
+        offset_x, offset_y = 420/num_clouds, 45
+        for i in range(num_clouds):
+            self.set_position(-150+offset_x*i, 260) if i % 2 == 1 else self.set_position(-150+offset_x*i, 260-offset_y)
+            self.draw_cloud()
+        log.debug(f'draw a designated number of clouds')
 
     def draw_tree(self):
         '''draw one tree'''
         _tree_crown_size = 50
         _tree_width, _tree_height = 25, 70
         _pos = self.my_turtle.position()
-        self.my_turtle.setheading(0)
-        self.draw_rectangle(_tree_width, _tree_height, 'SaddleBrown', 'SaddleBrown')
+        self.draw_rectangle(_tree_width, _tree_height, 'Black', 'SaddleBrown')
         self.set_position(_pos[0], _pos[1]-_tree_crown_size/2)
         self.draw_circle(25, 'LimeGreen', 'DarkGreen')
         self.set_position(_pos[0]+_tree_width, _pos[1]-_tree_crown_size/2)
@@ -146,7 +163,8 @@ class My_turtle():
         self.draw_circle(25, 'LimeGreen', 'DarkGreen')
         log.debug(f'draw a tree')
 
-    def draw_trees(self, num_trees): # Binglan to implement
+    def draw_trees(self, num_trees):
+        '''draw a designated number of trees'''
         offset = 120/num_trees
         for i in range(num_trees):
             self.set_position(-365+offset*i, -145)
