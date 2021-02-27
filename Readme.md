@@ -21,7 +21,12 @@ conda create -n my_turtle python=3.8
 - Activate the environment:
 ```
 conda activate my_turtle
-```  
+```
+- Install dependencies:
+```
+conda install -c anaconda pillow
+conda install -c conda-forge ghostscript  
+```
 
 ## Demo
 ### Run with default configuration
