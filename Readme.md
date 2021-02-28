@@ -24,7 +24,8 @@ conda activate my_turtle
 ```
 - Install dependencies:
 ```
-conda install -c anaconda pillow
+conda install numpy
+conda install pillow
 conda install -c conda-forge ghostscript  
 ```
 
