@@ -18,21 +18,21 @@ N/A
 ### Current Goals
 
 1. We initialized this repo by using [SWE for Science](www.sweforscience.com).
-2. We will run a local web server using Docker to receive users' input.
-3. Create a python program that receives users' input to draw an image of a nice looking house. 
+2. Create a python program that receives users' input to draw an image of a nice looking house. 
 
 **Phase I**
 
-For now, the image of house will have the following fixed components.
-- 4 windows
-- 2 garage doors
-- 1 door
-- 2 trees
-- 1 clouds
+1. The image of house will have the following fixed numbers of components.
+    - 4 windows
+    - 2 garage doors
+    - 1 door
+    - 2 trees
+    - 1 clouds
 
 **Phase II**
 
-Allow users to specify different numbers of objects in the image of a house.
+1. An interactive feature: will allow users to specify different numbers of objects in the image of a house.
+2. Establish proper unit tests
 
 ### Non-Goals
 
@@ -42,50 +42,34 @@ Allow users to specify different numbers of objects in the image of a house.
 
 ### Future goals
 
-1. Host an interactive web interface from AWS.
+1. Run a local web server using Docker to receive users' input.
 
 ## Detailed Design
 
-We will draw the draft using draw.io. Draw.io creates an XML file hosted on Google Drive (https://drive.google.com/file/d/1oKM5badNSETzD_BiwFQ3YALojEdTDxf5/view?usp=sharing). 
+We will draw the draft using draw.io. Draw.io creates an XML file that is currently hosted on Google Drive (https://drive.google.com/file/d/1oKM5badNSETzD_BiwFQ3YALojEdTDxf5/view?usp=sharing). 
 
-We will have a `Python-cli` that accepts integer numbers of windows, garage doors, house doors, trees, and clouds as arguments (Only allow integers for any arguments) from users. There will be a checkpoint that validates whether input arguments are integers. If not, the program returns an error and exit. If inputs are integers, the program will invoke functions in the `python_lib` to draw an image. 
+We will develop a `Python-cli` that accepts integer numbers of windows, garage doors, house doors, trees, and clouds as arguments (Only allow integers for any arguments) from users. There will be a checkpoint that validates whether input arguments are integers. If not, the program returns an error and exit. If inputs are integers, the program will invoke functions in the `python_lib` to draw an image. 
 
-We will have a `python_lib` that defines class(es) or functions to create house objects using Turtle.
+We will develop a `python_lib` that defines a class of Turtle objects. This Turtle class will contain functions to create objects of a house using Turtle.
 
 
 ### User requirements
 
-1. need to have a python=3.8 environment 
-1. need to specify minimum and maximum number of objects.
-- 0 <= windows <= _ (set a default value = 4)
-- 0 <= garage doors <= _ (set a default value = 2)
-- 1 <= doors <= _ (set a default value = 1). You must have at least one door to get in or out of a house.
-- 0 <= trees <= _ (set a default value = 2)
-- 0 <= clouds <= _ (set a default value = 1)
-
-### New/changed data structures?
-
-N/A
-
-### What APIs will you use/change?
-
-N/A
-
-### Throughput/latency/cost/efficiency concerns?
-
-N/A
+1. Need to have a python >= 3.5 environment (preferably 3.8)
+2. In the interactive mode, users need to specify minimum and maximum numbers of objects.
+    - 1 <= windows <= _ (set a default value = 4)
+    - 1 <= garage doors <= _ (set a default value = 2)
+    - 1 <= doors <= _ (set a default value = 1). You must have at least one door to get in or out of a house.
+    - 1 <= trees <= _ (set a default value = 2)
+    - 1 <= clouds <= _ (set a default value = 1)
 
 ### Data validation/what are potential error states?
 
-Non-integer arguments -> Return error.
+- Non-integer arguments -> Return error.
 
 ### Logging/monitoring/observability
 
-N/A
-
-### Security/Privacy
-
-N/A
+We will log program progress and error messages to an independent output log file.
 
 ### What will you test?
 
@@ -94,15 +78,14 @@ TBD (depending on what functions we will implement)
 ## Third Party dependencies
 
 - Python (>= 3, tested on version 3.8.7)
-- Pre-built python library "turtle".
+- Needed for unit tests
+    - numpy
+    - Pillow
+    - ghostscript
 
 ## Work Estimates
 
 This project is due Feb 28 (Sun).
-
-## Alternative Approaches
-
-N/A
 
 ## Homework Logging
 
@@ -110,9 +93,7 @@ N/A
 - Binglan will use pyenv (and venv) for python = 3.8.7 (Binglan's default version)
 - Rikiya will use conda for python=3.8.5 (conda only allowed me to install 3.8.5, so we have a little compatibility issue here -> docker may be a good solution but will try to see how the current setting works)
 
-1. Question from Rikiya: Are we going to use Makefile?
+2. Question from Rikiya: Are we going to use Makefile?
 
-1. Next step is to
-- Get familiar with turtle
-- Draw an overview of our house in some shared doc (google slide, draw.io, etc.)? 
-    - Binglan - I'd like to try out draw.io for this project.
+3. Error log - Binglan: issues caused by different developing environment
+    - Binglan had issue configuring ghostscript for python.
