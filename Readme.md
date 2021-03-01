@@ -133,3 +133,68 @@ The Makefile in contains a number of useful targets. Run `make help` to see how 
 
 *templates* Contains HTML templates for the webserver.
 
+# Technical Notes
+### 1. Install and Configure Tkinter in Mac
+```
+# Download took several minutes
+brew install tcl-tk
+# Configure tcl-tk path in the system profile
+# I am still using old-fashioned ~/.profile, instead of ~/.zshrc. 
+echo 'export PATH="/Users/binglan/homebrew/opt/tcl-tk/bin:$PATH"' >> ~/.profile
+# reload shell 
+source ~/.profile
+# check if tcl-tk is in $PATH
+echo $PATH | grep --color=auto tcl-tk
+
+# uninstall python
+pyenv uninstall 3.8.7
+# look up tcl-tk version
+brew info tcl-tk
+    tcl-tk: stable 8.6.11 [keg-only]
+    Tool Command Language
+    https://www.tcl-lang.org
+# configure environment and install python
+# replace the "-ltcl8.6 -ltk8.6" with the correct latest version from `brew info tcl-tk`
+# LDFLAGS and CPPFLAGS are for compilers to find tcl-tk you may need to set
+# PKG_CONFIG_PATH is for pkg-config to find tcl-tk you may need to set
+# It's important to point to the homebrew tcl-tk in PYTHON_CONFIGURE_OPTS
+env \
+  PATH="$(brew --prefix tcl-tk)/bin:$PATH" \
+  LDFLAGS="-L$(brew --prefix tcl-tk)/lib" \
+  CPPFLAGS="-I$(brew --prefix tcl-tk)/include" \
+  PKG_CONFIG_PATH="$(brew --prefix tcl-tk)/lib/pkgconfig" \
+  CFLAGS="-I$(brew --prefix tcl-tk)/include" \
+  PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$(brew --prefix tcl-tk)/include' --with-tcltk-libs='-L$(brew --prefix tcl-tk)/lib -ltcl8.6 -ltk8.6'" \
+pyenv install 3.8.7
+
+# use 3.8.7 as the global default
+pyenv global 3.8.7
+
+# check if turtle can be successfully imported without issue
+python
+import tkinter
+tkinter.TclVersion, tkinter.TkVersion # should see the same versions, like (8.6, 8.6)
+tkinter._test() # should get a GUI
+```
+
+### 2. Install and Configure Ghostscript in Mac (Ongoing Issue)
+```
+# check if gs is install in the system
+gs --version
+# if not install ghostscript using either
+brew update
+brew install ghostscript
+# check gs library path
+which gs
+
+# however, python still cannot locate gs lib
+# tried exporting gs path to $PATH in system profile or PYTHONPATH
+# neither worked
+## in terminal
+#echo 'export PATH="/Users/binglan/homebrew/bin/gs:$PATH"' >> ~/.profile
+#source ~/.profile
+## in python
+#import os
+#os.environ["PATH"] += ":$gs_path"
+```
+
