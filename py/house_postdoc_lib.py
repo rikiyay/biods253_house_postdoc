@@ -10,7 +10,6 @@ import math
 import subprocess
 import turtle
 
-import numpy as np
 from PIL import Image
 
 
@@ -204,6 +203,7 @@ class MyTurtle():
 
     def save_image(self, object_name, image_type):
         '''save the drawing as a jpg image'''
+        '''this function is designed in a way that the program has to be run from the repo root directory'''
         file_name = f'tmp/{image_type}_{object_name}'
         canvas = self.screen.getcanvas()
         canvas.postscript(file= file_name+'.eps', width=800, height=600)
