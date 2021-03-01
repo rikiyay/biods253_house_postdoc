@@ -90,7 +90,10 @@ python py/house_postdoc_cli.py -w 8 -d 5 -t 5 -c 10 -s 6
 ```
 defaults are: `--num_windows 4 --num_doors 1 --num_trees 3 --num_clouds 5 --draw_speed 0`
 
-### You can also run an interactive mode with: `python py/house_postdoc_cli.py --interactive` or `python py/house_postdoc_cli.py -i`
+### You can also run an interactive mode with:
+`python py/house_postdoc_cli.py --interactive`
+or
+`python py/house_postdoc_cli.py -i`
 
 ## Setup
 
