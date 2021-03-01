@@ -90,6 +90,8 @@ python py/house_postdoc_cli.py -w 8 -d 5 -t 5 -c 10 -s 6
 ```
 defaults are: `--num_windows 4 --num_doors 1 --num_trees 3 --num_clouds 5 --draw_speed 0`
 
+### You can also run an interactive mode with: `python py/house_postdoc_cli.py --interactive` or `python py/house_postdoc_cli.py -i`
+
 ## Setup
 
 NB: The prerequisites for this repository are python3, nodejs, and npm. Ensure you have installed these (either using brew if you're on MacOS, or apt-get if you are on *NIX).
