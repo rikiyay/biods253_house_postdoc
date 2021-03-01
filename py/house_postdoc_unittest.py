@@ -81,6 +81,32 @@ class Test(unittest.TestCase):
         reference_array = np.array(Image.open('tmp/reference_garage.jpg'))
         self.assertTrue(np.array_equal(test_array, reference_array))
 
+    def test_drawCloud(self):
+        my_turtle = house_postdoc_lib.MyTurtle(draw_speed=0)
+        WIDTH, HEIGHT = 800, 600
+        my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
+        my_turtle.draw_cloud()
+        my_turtle.my_turtle.hideturtle()
+        my_turtle.save_image(object_name='cloud', image_type='test')
+        my_turtle.screen.clear()
+        test_array = np.array(Image.open('tmp/test_cloud.jpg'))
+        subprocess.run(['rm', '-f', 'tmp/test_cloud.jpg'])
+        reference_array = np.array(Image.open('tmp/reference_cloud.jpg'))
+        self.assertTrue(np.array_equal(test_array, reference_array))
+
+    def test_drawTree(self):
+        my_turtle = house_postdoc_lib.MyTurtle(draw_speed=0)
+        WIDTH, HEIGHT = 800, 600
+        my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
+        my_turtle.draw_tree()
+        my_turtle.my_turtle.hideturtle()
+        my_turtle.save_image(object_name='tree', image_type='test')
+        my_turtle.screen.clear()
+        test_array = np.array(Image.open('tmp/test_tree.jpg'))
+        subprocess.run(['rm', '-f', 'tmp/test_tree.jpg'])
+        reference_array = np.array(Image.open('tmp/reference_tree.jpg'))
+        self.assertTrue(np.array_equal(test_array, reference_array))
+
     def test_drawHouse(self):
         my_turtle = house_postdoc_lib.MyTurtle(draw_speed=0)
         WIDTH, HEIGHT = 800, 600
