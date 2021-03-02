@@ -56,7 +56,6 @@ pip install ghostscript
 . venv/bin/activate && pip freeze > requirements.txt
 ```
 
-
 1. Using conda (Rikiya)
 - Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers) on your machine (download the distribution that comes with python3).  
 - Create a conda environment:
@@ -95,50 +94,7 @@ defaults are: `--num_windows 4 --num_doors 1 --num_trees 3 --num_clouds 5 --draw
 or
 `python py/house_postdoc_cli.py -i`
 
-## Setup
-
-NB: The prerequisites for this repository are python3, nodejs, and npm. Ensure you have installed these (either using brew if you're on MacOS, or apt-get if you are on *NIX).
-
-In order to set up the environment, run `make setup`. This will set up a virtual environment and download all dependencies.
-
-
-## Code structure:
-```.
-├── Dockerfile
-├── Makefile
-├── Readme.md
-├── Design.md
-└── py
-    ├── house_postdoc_cli.py
-    ├── house_postdoc_jupyter.ipydb
-    ├── house_postdoc_lib.py
-    ├── house_postdoc_unittest.py
-    ├── house_postdoc_webserver.py
-    ├── package-lock.json
-    ├── package.json
-    ├── requirements.txt
-    ├── serverless.yml
-    └── templates
-        └── form.html 
-```
-
-The Makefile in contains a number of useful targets. Run `make help` to see how to use it. `make TARGET` is how you invoke a particular target.
-
-*house_postdoc_cli.py* This is the command-line interface for this program. _TODO: REPLACE THIS DESCRIPTION_
-
-*house_postdoc_webserver.py* This is the Flask-based web server for this program. _TODO: REPLACE THIS DESCRIPTION_
-
-*house_postdoc_unittest.py* This has unittests for this program. These can be run with `make test`.  _TODO: REPLACE THIS DESCRIPTION_
-
-*package.json/package-lock.json* These files are for the NPM dependencies used by serverless/AWS lambda deploy scripts.
-
-*requirements.txt* This contains pip dependencies for this project. Use `make venv-freeze` to update.
-
-*serverless.yml* Contains configuration for AWS lambda deployment of the webserver.
-
-*templates* Contains HTML templates for the webserver.
-
-# Technical Notes
+## Technical Notes
 ### 1. Install and Configure Tkinter in Mac
 ```
 # Download took several minutes
