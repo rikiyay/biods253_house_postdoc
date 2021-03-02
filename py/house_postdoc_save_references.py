@@ -24,15 +24,12 @@ class SaveReferenceImage():
             self.my_turtle.draw_sun]
         self.OBJECTS = ['rectangle', 'triangle', 'window', 'door', 'garage', 'cloud', 'tree', 'house', 'sun']
 
-    def save_reference_images(self):
+    def save_reference_images(self, save_path):
         self.set_up_functions()
         for fnc, object_name in zip(self.DRAW_FUNCTIONS, self.OBJECTS):
             self.set_up_turtle()
             fnc()
             self.my_turtle.my_turtle.hideturtle()
-            self.my_turtle.save_image(object_name=object_name, image_type='reference')
+            self.my_turtle.save_image(object_name=object_name, image_type='reference', save_path=save_path)
             self.my_turtle.my_turtle.screen.clear()
-            print(f'reference {object_name} image saved successfully')
-
-if __name__ == '__main__':
-    SaveReferenceImage().save_reference_images()
+            # print(f'reference {object_name} image saved successfully')

@@ -201,13 +201,12 @@ class MyTurtle():
         self.my_turtle.end_fill()
         log.debug(f'draw the sun')
 
-    def save_image(self, object_name, image_type):
+    def save_image(self, object_name, image_type, save_path):
         '''save the drawing as a jpg image'''
         '''this function is designed in a way that the program has to be run from the repo root directory'''
-        file_name = f'tmp/{image_type}_{object_name}'
+        file_name = f'{save_path}/{image_type}_{object_name}'
         canvas = self.screen.getcanvas()
         canvas.postscript(file= file_name+'.eps', width=800, height=600)
         img = Image.open(file_name+'.eps')
         img.save(file_name+'.jpg')
-        subprocess.run(['rm', '-f', file_name+'.eps'])
         log.debug(f'save the drawing as an image in jpg format')
