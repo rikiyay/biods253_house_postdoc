@@ -41,7 +41,7 @@ class MyTurtle():
         self.my_turtle.pendown()
         log.debug(f'set turtle position at ({x, y})')
 
-    def draw_rectangle(self, x_length, y_length, line_color='blue', fill_color='cadet blue'):
+    def draw_rectangle(self, x_length=150, y_length=120, line_color='blue', fill_color='cadet blue'):
         '''draw a rectangle with arbitrary size'''
         self.my_turtle.setheading(0)
         self.my_turtle.color(line_color, fill_color)
@@ -54,7 +54,7 @@ class MyTurtle():
         self.my_turtle.end_fill()
         log.debug(f'draw a rectangle with a size of ({x_length, y_length})')
 
-    def draw_triangle(self, base_length, line_color='magenta', fill_color='pink'):
+    def draw_triangle(self, base_length=150, line_color='magenta', fill_color='pink'):
         '''draw a triangle with arbitrary size'''
         self.my_turtle.setheading(0)
         self.my_turtle.color(line_color, fill_color)
@@ -80,7 +80,7 @@ class MyTurtle():
         self.my_turtle.dot(base_diameter, dot_color)
         log.debug(f'draw a dot with a base diameter of {base_diameter}')
 
-    def draw_window(self, window_size):
+    def draw_window(self, window_size=40):
         '''draw a 2x2 window'''
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
@@ -107,7 +107,7 @@ class MyTurtle():
                 self.set_position(40+(i+1)*offset+i*40, -20-40/3)
                 self.draw_window(40)
 
-    def draw_door(self, x_length, y_length):
+    def draw_door(self, x_length=40, y_length=80):
         '''draw a door and a door knob'''
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)

@@ -7,92 +7,35 @@
 
 import sys, os
 
-import house_postdoc_lib
+from house_postdoc_lib import *
 
+
+class SaveReferenceImage():
+    def set_up_turtle(self):
+        self.my_turtle = MyTurtle(draw_speed=0)
+        WIDTH, HEIGHT = 800, 600
+        self.my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
+
+    def set_up_functions(self):
+        self.set_up_turtle()
+        self.DRAW_FUNCTIONS = [self.my_turtle.draw_rectangle, self.my_turtle.draw_triangle,\
+            self.my_turtle.draw_window, self.my_turtle.draw_door, self.my_turtle.draw_garage,\
+            self.my_turtle.draw_cloud, self.my_turtle.draw_tree, self.my_turtle.draw_house,\
+            self.my_turtle.draw_sun]
+        self.OBJECTS = ['rectangle', 'triangle', 'window', 'door', 'garage', 'cloud', 'tree', 'house', 'sun']
+
+    def save_reference_images(self):
+        self.set_up_functions()
+        for fnc, object_name in zip(self.DRAW_FUNCTIONS, self.OBJECTS):
+            self.set_up_turtle()
+            # self.my_turtle.my_turtle.clear()
+            # self.my_turtle.my_turtle.reset()
+            # self.my_turtle.my_turtle.speed(0)
+            fnc()
+            self.my_turtle.my_turtle.hideturtle()
+            self.my_turtle.save_image(object_name=object_name, image_type='reference')
+            self.my_turtle.my_turtle.screen.clear()
+            print(f'reference {object_name} image saved successfully')
 
 if __name__ == '__main__':
-    print(os.environ["PATH"])
-    # set up
-    my_turtle = house_postdoc_lib.MyTurtle(draw_speed=0)
-    WIDTH, HEIGHT = 800, 600
-    my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
-
-    # save reference_rectangle.jpg in tmp directory
-    my_turtle.draw_rectangle(x_length=150, y_length=120)
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='rectangle', image_type='reference')
-    print('reference rectangle image saved successfully')
-
-    # save reference_triangle.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_triangle(base_length=150)
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='triangle', image_type='reference')
-    print('reference triangle image saved successfully')
-
-    # save reference_window.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_window(window_size=40)
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='window', image_type='reference')
-    print('reference window image saved successfully')
-
-    # save reference_door.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_door(x_length=40, y_length=80)
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='door', image_type='reference')
-    print('reference door image saved successfully')
-
-    # save reference_garage.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_garage()
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='garage', image_type='reference')
-    print('reference garage image saved successfully')
-
-    # save reference_cloud.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_cloud()
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='cloud', image_type='reference')
-    print('reference cloud image saved successfully')
-
-    # save reference_tree.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_tree()
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='tree', image_type='reference')
-    print('reference tree image saved successfully')
-
-    # save reference_house.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_house()
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='house', image_type='reference')
-    print('reference house image saved successfully')
-    
-    # save reference_sun.jpg in tmp directory
-    my_turtle.my_turtle.clear()
-    my_turtle.my_turtle.reset()
-    my_turtle.my_turtle.speed(0)
-    my_turtle.draw_sun()
-    my_turtle.my_turtle.hideturtle()
-    my_turtle.save_image(object_name='sun', image_type='reference')
-    print('reference sun image saved successfully')
-
-    sys.exit(0)
+    SaveReferenceImage().save_reference_images()
