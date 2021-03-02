@@ -10,28 +10,28 @@ import unittest
 import numpy as np
 from PIL import Image
 
-from house_postdoc_lib import *
+import house_postdoc_lib
 from house_postdoc_save_references import SaveReferenceImage
 
 
 class Test(unittest.TestCase):
 
     def set_up_turtle(self):
-        self.my_turtle = MyTurtle(draw_speed=0)
+        self.my_turtle = house_postdoc_lib.MyTurtle(draw_speed=0)
         WIDTH, HEIGHT = 800, 600
         self.my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
 
     def set_up_functions(self):
         self.set_up_turtle()
-        self.DRAW_FUNCTIONS = [self.my_turtle.draw_rectangle, self.my_turtle.draw_triangle,\
+        self.draw_functions = [self.my_turtle.draw_rectangle, self.my_turtle.draw_triangle,\
             self.my_turtle.draw_window, self.my_turtle.draw_door, self.my_turtle.draw_garage,\
             self.my_turtle.draw_cloud, self.my_turtle.draw_tree, self.my_turtle.draw_house,\
             self.my_turtle.draw_sun]
-        self.OBJECTS = ['rectangle', 'triangle', 'window', 'door', 'garage', 'cloud', 'tree', 'house', 'sun']
+        self.objects = ['rectangle', 'triangle', 'window', 'door', 'garage', 'cloud', 'tree', 'house', 'sun']
 
     def test_all(self):
         self.set_up_functions()
-        for fnc, object_name in zip(self.DRAW_FUNCTIONS, self.OBJECTS):
+        for fnc, object_name in zip(self.draw_functions, self.objects):
             self.set_up_turtle()
             # self.my_turtle.my_turtle.clear()
             fnc()

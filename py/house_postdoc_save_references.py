@@ -7,12 +7,12 @@
 
 import sys, os
 
-from house_postdoc_lib import *
+import house_postdoc_lib
 
 
 class SaveReferenceImage():
     def set_up_turtle(self):
-        self.my_turtle = MyTurtle(draw_speed=0)
+        self.my_turtle = house_postdoc_lib.MyTurtle(draw_speed=0)
         WIDTH, HEIGHT = 800, 600
         self.my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
 
