@@ -28,9 +28,6 @@ class SaveReferenceImage():
         self.set_up_functions()
         for fnc, object_name in zip(self.DRAW_FUNCTIONS, self.OBJECTS):
             self.set_up_turtle()
-            # self.my_turtle.my_turtle.clear()
-            # self.my_turtle.my_turtle.reset()
-            # self.my_turtle.my_turtle.speed(0)
             fnc()
             self.my_turtle.my_turtle.hideturtle()
             self.my_turtle.save_image(object_name=object_name, image_type='reference')
