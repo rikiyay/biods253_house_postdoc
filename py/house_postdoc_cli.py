@@ -63,21 +63,24 @@ if __name__ == '__main__':
     my_turtle.screen.setup(WIDTH + 8, HEIGHT + 8)
 
     # house
-    my_turtle.draw_house()
+    pos_house = (40, -20)
+    my_turtle.draw_house(pos_house)
     # windows
-    my_turtle.draw_windows(args.num_windows)
+    my_turtle.draw_windows(args.num_windows, pos_house)
     # door
-    my_turtle.draw_doors(args.num_doors)
+    my_turtle.draw_doors(args.num_doors, pos_house)
     # garage
-    my_turtle.draw_garage()
+    my_turtle.draw_garage(pos_house)
     # tree
     my_turtle.draw_trees(args.num_trees)
     # cloud
     my_turtle.draw_clouds(args.num_clouds)
     # sun
-    my_turtle.draw_sun()
+    pos_sun = (-320, 180)
+    my_turtle.draw_sun(pos_sun)
     # text
-    my_turtle.set_position(0, 120)
+    pos_text = (0, 120)
+    my_turtle.set_position(x=pos_text[0], y=pos_text[1])
     my_turtle.my_turtle.write('Have a nice day!', align='center', font=('Arial', 20, 'normal'))
 
     my_turtle.my_turtle.hideturtle()

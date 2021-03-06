@@ -5,7 +5,8 @@
 ''' This is the command line interface to save reference images. '''
 ''' Has to run this program from the root directory of this GitHub repo '''
 
-import sys, os
+import os
+import sys
 
 import house_postdoc_lib
 
@@ -33,3 +34,6 @@ class SaveReferenceImage():
             self.my_turtle.save_image(object_name=object_name, image_type='reference', save_path=save_path)
             self.my_turtle.my_turtle.screen.clear()
             # print(f'reference {object_name} image saved successfully')
+
+if __name__ == '__main__':
+    SaveReferenceImage().save_reference_images(save_path="references")
