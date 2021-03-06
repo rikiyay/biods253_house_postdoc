@@ -12,7 +12,6 @@ import numpy as np
 from PIL import Image
 
 import house_postdoc_lib
-from house_postdoc_save_references import SaveReferenceImage
 
 
 class Test(unittest.TestCase):
@@ -40,13 +39,12 @@ class Test(unittest.TestCase):
             self.my_turtle.save_image(object_name=object_name, image_type='test', save_path=self.save_path)
             self.my_turtle.my_turtle.screen.clear()
             test_array = np.array(Image.open(f'{self.save_path}/test_{object_name}.jpg'))
-            reference_array = np.array(Image.open(f'{self.save_path}/reference_{object_name}.jpg'))
+            reference_array = np.array(Image.open(f'references/reference_{object_name}.jpg'))
             self.assertTrue(np.array_equal(test_array, reference_array))
 
 
 if __name__ == '__main__':
     tmp_dir = tempfile.TemporaryDirectory()
-    SaveReferenceImage().save_reference_images(tmp_dir.name)
     Test.save_path = tmp_dir.name
     unittest.main()
     tmp_dir.cleanup()

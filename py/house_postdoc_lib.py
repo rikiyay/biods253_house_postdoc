@@ -90,46 +90,46 @@ class MyTurtle():
         self.draw_rectangle(window_size/2, window_size/2, 'green', 'gainsboro')
         log.debug(f'draw a 2x2 window with a size of {window_size}')
 
-    def draw_windows(self, num_windows):
+    def draw_windows(self, num_windows, pos_house, window_size=40):
         '''draw arbitrary number of windows'''
-        if num_windows < 5:
-            offset = (240-40*(num_windows))/(num_windows+1)
+        if num_windows < int(200/window_size):
+            offset = (240-window_size*num_windows)/(num_windows+1)
             for i in range(num_windows):
-                self.set_position(40+(i+1)*offset+i*40, -60)
-                self.draw_window(40)
+                self.set_position(pos_house[0]+(i+1)*offset+i*window_size, pos_house[1]-40)
+                self.draw_window(window_size)
         else:
-            for i in range(4):
-                offset = 16
-                self.set_position(40+(i+1)*offset+i*40, -60-80/3)
-                self.draw_window(40)
-            for i in range(num_windows-4):
-                offset = (240-40*(num_windows-4))/((num_windows-4)+1)
-                self.set_position(40+(i+1)*offset+i*40, -20-40/3)
-                self.draw_window(40)
+            for i in range(int(200/window_size)-1):
+                offset = (240-window_size*(int(200/window_size)-1))/((int(200/window_size)-1)+1)
+                self.set_position(pos_house[0]+(i+1)*offset+i*window_size, pos_house[1]-40-80/3)
+                self.draw_window(window_size)
+            for i in range(num_windows-(int(200/window_size)-1)):
+                offset = (240-window_size*(num_windows-(int(200/window_size)-1)))/((num_windows-(int(200/window_size)-1))+1)
+                self.set_position(pos_house[0]+(i+1)*offset+i*window_size, pos_house[1]-40/3)
+                self.draw_window(window_size)
 
     def draw_door(self, x_length=40, y_length=80):
         '''draw a door and a door knob'''
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
         self.draw_rectangle(x_length, y_length, 'dark goldenrod', 'gold')
-        self.set_position(_pos[0]+15, _pos[1]-(y_length/2))
+        self.set_position(_pos[0]+(x_length*(3/8)), _pos[1]-(y_length/2))
         self.my_turtle.color('tomato')
         self.my_turtle.begin_fill()
-        self.my_turtle.circle(5)
+        self.my_turtle.circle(x_length/8)
         self.my_turtle.end_fill()
         log.debug(f'draw a door and a door knob')
 
-    def draw_doors(self, num_doors):
+    def draw_doors(self, num_doors, pos_house, x_length=40, y_length=80):
         '''draw arbitrary number of doors'''
-        offset = (240-40*num_doors)/(num_doors+1)
+        offset = (240-x_length*num_doors)/(num_doors+1)
         for i in range(num_doors):
-            self.set_position(40+(i+1)*offset+i*40, -140)
-            self.draw_door(x_length=40, y_length=80)
+            self.set_position(pos_house[0]+(i+1)*offset+i*x_length, pos_house[1]-120)
+            self.draw_door(x_length=x_length, y_length=y_length)
         log.debug(f'draw arbitrary number of doors')
 
-    def draw_garage(self, x_length=180, y_length=135):
+    def draw_garage(self, pos_house, x_length=180, y_length=135):
         '''draw a garage door'''
-        self.set_position(x=-165, y=-85)
+        self.set_position(x=pos_house[0]-205, y=pos_house[1]-65)
         _pos = self.my_turtle.position()
         self.my_turtle.setheading(0)
         self.draw_rectangle(x_length/2, y_length, 'green', 'light yellow')
@@ -180,20 +180,20 @@ class MyTurtle():
             self.draw_tree()
         log.debug(f'draw arbitrary number of doors')
 
-    def draw_house(self):
+    def draw_house(self, pos_house):
         '''draw a house'''
-        self.set_position(x=40, y=-20)
+        self.set_position(x=pos_house[0], y=pos_house[1])
         self.draw_rectangle(x_length=240, y_length=200)
-        self.set_position(x=0, y=-20)
+        self.set_position(x=pos_house[0]-40, y=pos_house[1])
         self.draw_triangle(base_length=320)
-        self.set_position(x=-190, y=-60)
+        self.set_position(x=pos_house[0]-230, y=pos_house[1]-40)
         self.draw_rectangle(x_length=230, y_length=160)
         log.debug(f'draw a house')
 
-    def draw_sun(self):
+    def draw_sun(self, pos_sun):
         '''draw the sun'''
+        self.set_position(x=pos_sun[0], y=pos_sun[1])
         self.my_turtle.color('tomato', 'gold')
-        self.set_position(x=-320, y=180)
         self.my_turtle.begin_fill()
         for _ in range(36):
             self.my_turtle.forward(100)
@@ -209,4 +209,5 @@ class MyTurtle():
         canvas.postscript(file= file_name+'.eps', width=800, height=600)
         img = Image.open(file_name+'.eps')
         img.save(file_name+'.jpg')
+        subprocess.run(['rm', f'{file_name}.eps'])
         log.debug(f'save the drawing as an image in jpg format')
